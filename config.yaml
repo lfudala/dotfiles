@@ -1,0 +1,36 @@
+config:
+  backup: true
+  banner: false
+  create: true
+  dotpath: .
+  ignoreempty: false
+  keepdot: true
+  longkey: false
+  showdiff: false
+  workdir: ~/.config/dotdrop
+dotfiles:
+  f_bash_profile:
+    dst: ~/.bash_profile
+    src: .bash_profile
+  f_bashrc:
+    dst: ~/.bashrc
+    src: .bashrc
+  d_config:
+    dst: ~/.config/
+    src: .config
+    link: link_children
+  f_screenrc:
+    dst: ~/.screenrc
+    src: .screenrc
+  f_vimrc:
+    dst: ~/.vimrc
+    src: .vimrc
+profiles:
+  default:
+    dotfiles:
+    - f_bash_profile
+    - f_bashrc
+    - d_config
+    - f_screenrc
+    - f_vimrc
+

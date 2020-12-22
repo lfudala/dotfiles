@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+function sshs () {
+    ip=$1
+    ssh -t "$1" screen -R
+}
+
