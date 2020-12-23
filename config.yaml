@@ -25,6 +25,9 @@ dotfiles:
   f_vimrc:
     dst: ~/.vimrc
     src: .vimrc
+  f_profile:
+    src: .profile
+    dst: ~/.profile
 profiles:
   default:
     dotfiles:
@@ -33,4 +36,5 @@ profiles:
     - d_config
     - f_screenrc
     - f_vimrc
+    - f_profile
 
