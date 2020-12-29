@@ -26,9 +26,11 @@ set show-all-if-ambiguous on
 # https://unix.stackexchange.com/questions/55203
 set menu-complete-display-prefix on
 
+$if mode=emacs
 # the following line is actually
 # equivalent to "\C-?": delete-char
 "\e[3~": delete-char
+"\e[2~": quoted-insert
 
 # VT
 "\e[1~": beginning-of-line
@@ -41,10 +43,30 @@ set menu-complete-display-prefix on
 # rxvt and konsole (i.e. the KDE-app...)
 "\e[7~": beginning-of-line
 "\e[8~": end-of-line
+"\eOc": forward-word
+"\eOd": backward-word
 
 # VT220
 "\eOH": beginning-of-line
 "\eOF": end-of-line
+
+# mappings for Ctrl-left-arrow and Ctrl-right-arrow for word moving
+# "\e[1;5C": forward-word
+# "\e[1;5D": backward-word
+# "\e[5C": forward-word
+# "\e[5D": backward-word
+# "\e\e[C": forward-word
+# "\e\e[D": backward-word
+
+# for non RH/Debian xterm, can't hurt for RH/Debian xterm
+# # "\eOH": beginning-of-line
+# # "\eOF": end-of-line
+#
+# # for freebsd console
+# # "\e[H": beginning-of-line
+# # "\e[F": end-of-line
+
+$endif
 
 # Allow 8-bit input/output
 #set meta-flag on
