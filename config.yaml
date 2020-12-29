@@ -28,6 +28,9 @@ dotfiles:
   f_profile:
     src: .profile
     dst: ~/.profile
+  f_inputrc:
+    src: .inputrc
+    dst: ~/.inputrc
 profiles:
   default:
     dotfiles:
@@ -37,4 +40,5 @@ profiles:
     - f_screenrc
     - f_vimrc
     - f_profile
+    - f_inputrc
 
