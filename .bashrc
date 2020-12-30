@@ -85,11 +85,11 @@ fi
 #
 # Add home/bin if not already in path
 if [ -d "${HOME}/bin" ] && [[ ":$PATH:" != *":${HOME}/bin:"* ]]; then
-  PATH="$1${PATH:+":$PATH"}"
+  PATH="${HOME}/bin${PATH:+":$PATH"}"
 fi
 # Add home/.local/bin if not already in path
 if [ -d "${HOME}/.local/bin" ] && [[ ":$PATH:" != *":${HOME}/.local/bin:"* ]]; then
-  PATH="$1${PATH:+":$PATH"}"
+  PATH="${HOME}/.local/bin${PATH:+":$PATH"}"
 fi
 
 # Set ssh-agent vars for bash
