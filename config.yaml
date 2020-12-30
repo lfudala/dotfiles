@@ -5,6 +5,7 @@ config:
   dotpath: .
   ignoreempty: false
   keepdot: true
+  link_dotfile_default: link
   longkey: false
   showdiff: false
   workdir: ~/.config/dotdrop
@@ -18,6 +19,7 @@ dotfiles:
   d_config:
     dst: ~/.config/
     src: .config
+    chmod: 700
     link: link_children
   f_screenrc:
     dst: ~/.screenrc
