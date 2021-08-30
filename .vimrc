@@ -1,3 +1,6 @@
+if &term == "cygwin"
+  set term=xterm-256color
+endif
 " Set 'nocompatible' because it's vim, not vi, and we want to add things if we
 " try to be vi or distro compatible
 set nocompatible

@@ -6,6 +6,7 @@
 # Capture system type
 if [ "$(uname -o)" = "Cygwin" ]; then
   system_type="Cygwin"
+  export TERM=cygwin
 else
   system_type="$(uname -s)"
 fi
