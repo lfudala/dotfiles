@@ -25,5 +25,7 @@ alias dig='/usr/bin/dig +nocookie'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Workaround for chezmoi (go) pathing with cygwin
-alias chezmoi="chezmoi -c '$(cygpath -w /home/$(whoami)/.config/chezmoi/chezmoi.yaml)'"
+if [ "$(uname -o)" = "Cygwin" ]; then
+  alias chezmoi="chezmoi -c '$(cygpath -w /home/$(whoami)/.config/chezmoi/chezmoi.yaml)'"
+fi
 
