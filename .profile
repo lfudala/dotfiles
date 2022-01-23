@@ -1,7 +1,9 @@
 # User dependent .profile file
 
 # Set user-defined locale
-export LANG=$(locale -uU)
+if [ "$(uname -o)" = "Cygwin" ]; then
+  export LANG=$(locale -uU)
+fi
 # Set editor
 export EDITOR=vim
 
