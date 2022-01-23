@@ -103,6 +103,11 @@ else
   eval $($SSHAGENT $SSHAGENTARGS)
 fi
 
+# If pipx is installed, register completions, see `pipx completions`
+if [ -x "$(command -v register-python-argcomplete)" ] && [ -x "$(command -v pipx)" ] ; then
+  eval "$(register-python-argcomplete pipx)"
+fi
+
 # If Cygwin, update resolv.conf on start
 if [ "$system_type" = "Cygwin" ]; then
   if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/.resolv.conf.rc" ]; then
