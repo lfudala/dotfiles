@@ -53,8 +53,8 @@ $if mode=emacs
 "\e[1;5D": backward-word # 
 "\e[5C": forward-word    # Ctrl+right
 "\e[5D": backward-word   # Ctrl+left
-"\e\e[C": forward-word   # Alt+right
-"\e\e[D": backward-word  # Alt+left
+#"\e\e[C": forward-word   # Alt+right
+#"\e\e[D": backward-word  # Alt+left
 
 # for non RH/Debian xterm, can't hurt for RH/Debian xterm
 # # "\eOH": beginning-of-line
