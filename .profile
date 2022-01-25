@@ -4,8 +4,11 @@
 if [ "$(uname -o)" = "Cygwin" ]; then
   export LANG=$(locale -uU)
 fi
-# Set editor
-export EDITOR=vim
+
+# Source our environment variables file
+if [ -f "${HOME}/.config/.env" ]; then
+  source "${HOME}/.config/.env"
+fi
 
 # This file is not read by bash(1) if ~/.bash_profile or ~/.bash_login
 # exists.
@@ -17,21 +20,15 @@ if [ -n "${BASH_VERSION}" ]; then
   fi
 fi
 
-# set PATH so it includes user's private bin directories
-PATH="$HOME/bin:$HOME/.local/bin:$PATH"
-
-# Set XDG Base Directory user directories if not already set
-export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
+# Create XDG Base Directory user directories if they don't exist
 if [ ! -d "${XDG_CONFIG_HOME}" ] ; then
   mkdir -m 700 "${XDG_CONFIG_HOME}"
 fi
 
-export XDG_CACHE_HOME=${XDG_CACHE_HOME:="$HOME/.cache"}
 if [ ! -d "${XDG_CACHE_HOME}" ] ; then
   mkdir -m 700 "${XDG_CACHE_HOME}"
 fi
 
-export XDG_STATE_HOME=${XDG_STATE_HOME:="$HOME/.local/state"}
 # If XDG_STATE_HOME is $HOME/.local/state, create .local if doesn't
 # exist, else just try to create XDG_STATE_HOME
 if [ ! -d "${XDG_STATE_HOME}" ] ; then
@@ -43,7 +40,6 @@ if [ ! -d "${XDG_STATE_HOME}" ] ; then
   mkdir -m 700 "${XDG_STATE_HOME}"
 fi
 
-export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
 # If XDG_DATA_HOME is $HOME/.local/share, create .local if doesn't
 # exist, else just try to create XDG_DATA_HOME
 if [ ! -d "${XDG_DATA_HOME}" ] ; then
