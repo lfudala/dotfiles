@@ -29,24 +29,20 @@ if [ ! -d "${XDG_CACHE_HOME}" ] ; then
   mkdir -m 700 "${XDG_CACHE_HOME}"
 fi
 
-# If XDG_STATE_HOME is $HOME/.local/state, create .local if doesn't
-# exist, else just try to create XDG_STATE_HOME
+# Ensure common dir
+if [ ! -d "${HOME}/.local" ] ; then
+  mkdir -m 700 "${HOME}/.local"
+fi
+
 if [ ! -d "${XDG_STATE_HOME}" ] ; then
-  if [ "${XDG_STATE_HOME}" = "${HOME}/.local/state" ] ; then
-    if [ ! -d "${HOME}/.local" ] ; then
-      mkdir -m 700 "${HOME}/.local"
-    fi
-  fi
   mkdir -m 700 "${XDG_STATE_HOME}"
 fi
 
-# If XDG_DATA_HOME is $HOME/.local/share, create .local if doesn't
-# exist, else just try to create XDG_DATA_HOME
 if [ ! -d "${XDG_DATA_HOME}" ] ; then
-  if [ "${XDG_DATA_HOME}" = "${HOME}/.local/share" ] ; then
-    if [ ! -d "${HOME}/.local" ] ; then
-      mkdir -m 700 "${HOME}/.local"
-    fi
-  fi
   mkdir -m 700 "${XDG_DATA_HOME}"
+fi
+
+# Create python venvs dir
+if [ ! -d "${XDG_DATA_HOME}/virtualenvs" ] ; then
+  mkdir -m 700 "${XDG_DATA_HOME}/virtualenvs"
 fi
