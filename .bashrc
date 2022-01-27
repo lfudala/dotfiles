@@ -114,6 +114,15 @@ if [ "$system_type" = "Cygwin" ]; then
     source "${XDG_CONFIG_HOME:-$HOME/.config}/.resolv.conf.rc"
   fi
 fi
+
+if [ "$system_type" = "Linux" ] && [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ] ; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  for COMPLETION in "${HOMEBREW_PREFIX}/etc/bash_completion.d/"*
+  do
+    [ -r "${COMPLETION}" ] && source "${COMPLETION}"
+  done
+fi
+
 unset system_type
 
 
