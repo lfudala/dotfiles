@@ -1,4 +1,12 @@
+# If already sourced, exit
+[ -n "$bashprofile_sourced" ] && return
+bashprofile_sourced=1
+
 # User dependent .bash_profile file
+# Try .profile in case it was skipped
+if [ -f "${HOME}/.profile" ] ; then
+  source "${HOME}/.profile"
+fi
 
 # source the users bashrc if it exists
 if [ -f "${HOME}/.bashrc" ] ; then

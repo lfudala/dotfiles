@@ -1,3 +1,7 @@
+# If already sourced, exit
+[ -n "$profile_sourced" ] && return
+profile_sourced=1
+
 # User dependent .profile file
 
 # Set user-defined locale
