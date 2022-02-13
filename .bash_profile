@@ -1,6 +1,6 @@
 # If already sourced, exit
-[ -n "$bashprofile_sourced" ] && return
-bashprofile_sourced=1
+#[ -n "$bashprofile_sourced" ] && return
+#bashprofile_sourced=1
 
 # User dependent .bash_profile file
 # Try .profile in case it was skipped

@@ -12,7 +12,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias ls='ls --color=auto'                 # classify files in colour
 fi
 # Some shortcuts for different directory listings
-alias ll='ls -alF'                              # long list
+alias ll='LC_COLLATE=C ls -alF'               # long list and good ole C sorting
 alias la='ls -A'                              # all but . and ..
 alias l='ls -CF'                              #
 # Aliases for programs
