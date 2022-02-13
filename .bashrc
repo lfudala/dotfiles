@@ -115,6 +115,26 @@ if [ "$system_type" = "Cygwin" ]; then
   fi
 fi
 
+# Completions
+#
+# From /etc/profile.d/bash_completion.sh
+# Check for interactive bash and that we haven't already been sourced.
+if [ "x${BASH_VERSION-}" != x -a "x${PS1-}" != x -a "x${BASH_COMPLETION_VERSINFO-}" = x ]; then
+
+    # Check for recent enough version of bash.
+    if [ "${BASH_VERSINFO[0]}" -gt 4 ] || \
+       [ "${BASH_VERSINFO[0]}" -eq 4 -a "${BASH_VERSINFO[1]}" -ge 1 ]; then
+        [ -r "${XDG_CONFIG_HOME:-$HOME/.config}/bash_completion" ] && \
+            . "${XDG_CONFIG_HOME:-$HOME/.config}/bash_completion"
+        if shopt -q progcomp && [ -r /usr/share/bash-completion/bash_completion ]; then
+            # Source completion code.
+            . /usr/share/bash-completion/bash_completion
+        fi
+    fi
+
+fi
+#
+# If we're on Linux and using brew
 if [ "$system_type" = "Linux" ] && [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ] ; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   for COMPLETION in "${HOMEBREW_PREFIX}/etc/bash_completion.d/"*
