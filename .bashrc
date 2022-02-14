@@ -94,13 +94,19 @@ if [ -d "${HOME}/.local/bin" ] && [[ ":$PATH:" != *":${HOME}/.local/bin:"* ]]; t
 fi
 
 # Set ssh-agent vars for bash
-SSHAGENT=/usr/bin/ssh-agent
-SSHAGENTARGS="-s"
+#SSHAGENT=/usr/bin/ssh-agent
+#SSHAGENTARGS="-s"
 # Load default key with keychain if available, else ssh-agent
 if [ -x /usr/bin/keychain ]; then
   eval $(keychain --agents ssh --eval -Q id_rsa)
 else
-  eval $($SSHAGENT $SSHAGENTARGS)
+  if [ ! -S ~/.ssh/ssh_auth_sock ]; then
+    eval $(ssh-agent)
+    ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
+  fi
+  export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
+  ssh-add -l > /dev/null || ssh-add
+  #eval $($SSHAGENT $SSHAGENTARGS)
 fi
 
 # If pipx is installed, register completions, see `pipx completions`
