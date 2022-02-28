@@ -1,4 +1,6 @@
 # User dependent .bashrc file
+[ -n "$bashrc_sourced" ] && return
+bashrc_sourced=1
 
 # If not running interactively, don't do anything
 [[ "$-" != *i* ]] && return
@@ -150,5 +152,3 @@ if [ "$system_type" = "Linux" ] && [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ] 
 fi
 
 unset system_type
-
-

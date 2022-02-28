@@ -18,14 +18,17 @@ alias l='ls -CF'                              #
 # Aliases for programs
 alias vi='vim'
 # Until eDNS is supported everywhere I work
-alias dig='/usr/bin/dig +nocookie'
+#alias dig='/usr/bin/dig +nocookie'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
+# If Mac, enable ls color
+if [ "$(uname -o)" = "Darwin" ]; then
+  alias ls='ls -G'
+fi
 # Workaround for chezmoi (go) pathing with cygwin
 if [ "$(uname -o)" = "Cygwin" ]; then
   alias chezmoi="chezmoi -c '$(cygpath -w /home/$(whoami)/.config/chezmoi/chezmoi.yaml)'"
 fi
-
