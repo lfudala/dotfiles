@@ -5,7 +5,7 @@ profile_sourced=1
 # User dependent .profile file
 
 # Set user-defined locale
-if [ "$(uname -o)" = "Cygwin" ]; then
+if [ ! "$(uname)" = "Darwin" ] && [ "$(uname -o)" = "Cygwin" ]; then
   export LANG=$(locale -uU)
 fi
 

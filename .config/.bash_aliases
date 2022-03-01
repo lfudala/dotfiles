@@ -29,6 +29,6 @@ if [ "$(uname -o)" = "Darwin" ]; then
   alias ls='ls -G'
 fi
 # Workaround for chezmoi (go) pathing with cygwin
-if [ "$(uname -o)" = "Cygwin" ]; then
+if [ ! "$(uname)" = "Darwin" ] && [ "$(uname -o)" = "Cygwin" ]; then
   alias chezmoi="chezmoi -c '$(cygpath -w /home/$(whoami)/.config/chezmoi/chezmoi.yaml)'"
 fi

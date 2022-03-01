@@ -6,7 +6,9 @@ bashrc_sourced=1
 [[ "$-" != *i* ]] && return
 
 # Capture system type
-if [ "$(uname -o)" = "Cygwin" ]; then
+if [ "$(uname)" = "Darwin" ]; then
+  system_type="Darwin"
+elif [ "$(uname -o)" = "Cygwin" ]; then
   system_type="Cygwin"
   export TERM=cygwin
 else
