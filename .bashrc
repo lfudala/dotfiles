@@ -143,6 +143,10 @@ if [ "x${BASH_VERSION-}" != x -a "x${PS1-}" != x -a "x${BASH_COMPLETION_VERSINFO
     fi
 
 fi
+# From brew
+if [ "$system_type" = "Darwin" ] ; then
+  [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+fi
 #
 # If we're on Linux and using brew
 if [ "$system_type" = "Linux" ] && [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ] ; then

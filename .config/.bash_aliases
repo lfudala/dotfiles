@@ -25,7 +25,7 @@ alias vi='vim'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # If Mac, enable ls color
-if [ "$(uname -o)" = "Darwin" ]; then
+if [ "$(uname)" = "Darwin" ]; then
   alias ls='ls -G'
 fi
 # Workaround for chezmoi (go) pathing with cygwin
