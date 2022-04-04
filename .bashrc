@@ -92,9 +92,18 @@ fi
 if [ -d "${HOME}/bin" ] && [[ ":$PATH:" != *":${HOME}/bin:"* ]]; then
   PATH="${HOME}/bin${PATH:+":$PATH"}"
 fi
+#
 # Add home/.local/bin if not already in path
 if [ -d "${HOME}/.local/bin" ] && [[ ":$PATH:" != *":${HOME}/.local/bin:"* ]]; then
   PATH="${HOME}/.local/bin${PATH:+":$PATH"}"
+fi
+#
+# If we're using Volta
+if [ -d "${HOME}/.volta/bin" ] ; then
+  export VOLTA_HOME="{$HOME}/.volta"
+  if [[ ":$PATH:" != *":${VOLTA_HOME}/bin"* ]]; then
+    PATH="${VOLTA_HOME}/bin${PATH:+":$PATH"}"
+  fi
 fi
 
 # Set ssh-agent vars for bash
@@ -111,11 +120,6 @@ else
   export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
   ssh-add -l > /dev/null || ssh-add
   #eval $($SSHAGENT $SSHAGENTARGS)
-fi
-
-# If pipx is installed, register completions, see `pipx completions`
-if [ -x "$(command -v register-python-argcomplete)" ] && [ -x "$(command -v pipx)" ] ; then
-  eval "$(register-python-argcomplete pipx)"
 fi
 
 # If Cygwin, update resolv.conf on start
@@ -155,6 +159,11 @@ if [ "$system_type" = "Linux" ] && [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ] 
   do
     [ -r "${COMPLETION}" ] && source "${COMPLETION}"
   done
+fi
+#
+# If pipx is installed, register completions, see `pipx completions`
+if [ -x "$(command -v register-python-argcomplete)" ] && [ -x "$(command -v pipx)" ] ; then
+  eval "$(register-python-argcomplete pipx)"
 fi
 
 unset system_type
