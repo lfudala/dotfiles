@@ -105,6 +105,14 @@ if [ -d "${HOME}/.volta/bin" ] ; then
     PATH="${VOLTA_HOME}/bin${PATH:+":$PATH"}"
   fi
 fi
+#
+# If Go is in HOME
+if [ -d "${HOME}/.local/go/bin" ] ; then
+  export GOROOT="{$HOME}/.local/go"
+  if [[ ":$PATH:" != *":${GOROOT}/bin"* ]]; then
+    PATH="${GOROOT}/bin${PATH:+":$PATH"}"
+  fi
+fi
 
 # Set ssh-agent vars for bash
 #SSHAGENT=/usr/bin/ssh-agent
@@ -167,3 +175,4 @@ if [ -x "$(command -v register-python-argcomplete)" ] && [ -x "$(command -v pipx
 fi
 
 unset system_type
+
