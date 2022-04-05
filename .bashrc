@@ -100,7 +100,7 @@ fi
 #
 # If we're using Volta
 if [ -d "${HOME}/.volta/bin" ] ; then
-  export VOLTA_HOME="{$HOME}/.volta"
+  export VOLTA_HOME="${HOME}/.volta"
   if [[ ":$PATH:" != *":${VOLTA_HOME}/bin"* ]]; then
     PATH="${VOLTA_HOME}/bin${PATH:+":$PATH"}"
   fi
@@ -108,7 +108,7 @@ fi
 #
 # If Go is in HOME
 if [ -d "${HOME}/.local/go/bin" ] ; then
-  export GOROOT="{$HOME}/.local/go"
+  export GOROOT="${HOME}/.local/go"
   if [[ ":$PATH:" != *":${GOROOT}/bin"* ]]; then
     PATH="${GOROOT}/bin${PATH:+":$PATH"}"
   fi
