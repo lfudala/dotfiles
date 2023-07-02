@@ -19,6 +19,8 @@ alias l='ls -CF'                              #
 alias vi='vim'
 # Until eDNS is supported everywhere I work
 #alias dig='/usr/bin/dig +nocookie'
+# Flush network cache
+alias flushcaches='sudo resolvectl flush-caches'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
