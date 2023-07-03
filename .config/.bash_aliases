@@ -21,6 +21,12 @@ alias vi='vim'
 #alias dig='/usr/bin/dig +nocookie'
 # Flush network cache
 alias flushcaches='sudo resolvectl flush-caches'
+# Git aliases
+alias g="git"
+complete -o bashdefault -o default -o nospace -F __git_wrap__git_main g
+alias gst="git status"
+alias gr="git remote -v"
+alias gd="git diff"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
