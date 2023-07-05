@@ -27,6 +27,7 @@ complete -o bashdefault -o default -o nospace -F __git_wrap__git_main g
 alias gst="git status"
 alias gr="git remote -v"
 alias gd="git diff"
+alias bdf="btrfs filesystem usage"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
