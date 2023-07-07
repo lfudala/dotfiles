@@ -23,7 +23,9 @@ alias vi='vim'
 alias flushcaches='sudo resolvectl flush-caches'
 # Git aliases
 alias g="git"
-complete -o bashdefault -o default -o nospace -F __git_wrap__git_main g
+# https://unix.stackexchange.com/a/216806
+_completion_loader git
+eval "$(complete -p git | sed -r 's/(\s)git$/\1g/')"
 alias gst="git status"
 alias gr="git remote -v"
 alias gd="git diff"
