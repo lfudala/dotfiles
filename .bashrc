@@ -76,17 +76,8 @@ else
 fi
 unset color_prompt force_color_prompt
 
-# Includes
-#
-# Some people use a different file for aliases
-if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/.bash_aliases" ]; then
-  source "${XDG_CONFIG_HOME:-$HOME/.config}/.bash_aliases"
-fi
-#
-# Some people use a different file for functions
-if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/.bash_functions" ]; then
-  source "${XDG_CONFIG_HOME:-$HOME/.config}/.bash_functions"
-fi
+
+# Paths
 #
 # Add home/bin if not already in path
 if [ -d "${HOME}/bin" ] && [[ ":$PATH:" != *":${HOME}/bin:"* ]]; then
@@ -172,6 +163,18 @@ fi
 # If pipx is installed, register completions, see `pipx completions`
 if [ -x "$(command -v register-python-argcomplete)" ] && [ -x "$(command -v pipx)" ] ; then
   eval "$(register-python-argcomplete pipx)"
+fi
+
+# Includes
+#
+# Some people use a different file for aliases
+if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/.bash_aliases" ]; then
+  source "${XDG_CONFIG_HOME:-$HOME/.config}/.bash_aliases"
+fi
+#
+# Some people use a different file for functions
+if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/.bash_functions" ]; then
+  source "${XDG_CONFIG_HOME:-$HOME/.config}/.bash_functions"
 fi
 
 unset system_type
