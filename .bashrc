@@ -98,12 +98,19 @@ if [ -d "${HOME}/.volta/bin" ] ; then
 fi
 #
 # If Go is in HOME
-if [ -d "${HOME}/.local/go/bin" ] ; then
-  export GOROOT="${HOME}/.local/go"
-  if [[ ":$PATH:" != *":${GOROOT}/bin"* ]]; then
-    PATH="${GOROOT}/bin${PATH:+":$PATH"}"
+#if [ -d "${HOME}/.local/go/bin" ] ; then
+#  export GOROOT="${HOME}/.local/go"
+#  if [[ ":$PATH:" != *":${GOROOT}/bin"* ]]; then
+#    PATH="${GOROOT}/bin${PATH:+":$PATH"}"
+#  fi
+#fi
+# If Go is in code
+if [ -d "${HOME}/code/go/bin" ] ; then
+  if [[ ":$PATH:" != *":${HOME}/code/go/bin"* ]]; then
+    PATH="${HOME}/code/go/bin${PATH:+":$PATH"}"
   fi
 fi
+
 
 # Set ssh-agent vars for bash
 #SSHAGENT=/usr/bin/ssh-agent
